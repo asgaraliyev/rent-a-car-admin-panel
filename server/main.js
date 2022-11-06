@@ -1,35 +1,36 @@
 import { Meteor } from 'meteor/meteor';
 import { LinksCollection } from '/imports/api/links';
 import {WebApp} from "meteor/webapp"
-import main_html from './main_html';
-import head_html from './head_html';
-import { body_html } from './body_html';
-import { index_html } from './pages/index_html';
-import { cars_html } from './pages/cars_html';
 import "../imports/api/files/collection"
+import "../imports/api/files/methods"
 import "../imports/api/files/publications"
 import "../imports/api/products/collection"
 import "../imports/api/products/methods"
 import "../imports/api/products/publications"
-function indexController(req, res, next)  {
+import ProductsCol from '../imports/api/products/collection';
+import FilesCol from '../imports/api/files/collection';
+function productsController(req, res, next)  {
   res.writeHead(200);
-  res.end(main_html(
-    {
-      head:head_html(),
-      body:body_html({children:index_html()})
-    }
-  ));
+  console.log("req",req.query)
+  let products=ProductsCol.find().fetch()
+  products=products.map(product=>{
+    product.imageIds=FilesCol.find({"meta.product_id":product._id}).fetch().map(file=>{
+      const res= FilesCol.findOne({_id:file._id}).link()
+      return res
+    })
+    product.mainImageId=product.imageIds[0]
+    return product
+  })
+  res.end(JSON.stringify(products))
 }
-WebApp.connectHandlers.use('/home',indexController );
-WebApp.connectHandlers.use('/index',indexController );
-WebApp.connectHandlers.use('/cars', (req, res, next) => {
-  res.writeHead(200);
-  res.end(main_html(
-    {
-      head:head_html(),
-      body:body_html({children:cars_html()})
-    }
-  ));
+WebApp.connectHandlers.use((req, res, next) => {
+  if (req.url.includes('/api/products') ) {
+  console.log(req.url.includes('/api/products'),req.url,req.query)
+
+    productsController(req,res,next)
+  } else {
+    next();
+  }
 });
 
 function insertLink({ title, url }) {
@@ -37,26 +38,4 @@ function insertLink({ title, url }) {
 }
 
 Meteor.startup(() => {
-  // If the Links collection is empty, add some data.
-  if (LinksCollection.find().count() === 0) {
-    insertLink({
-      title: 'Do the Tutorial',
-      url: 'https://www.meteor.com/tutorials/react/creating-an-app'
-    });
-
-    insertLink({
-      title: 'Follow the Guide',
-      url: 'http://guide.meteor.com'
-    });
-
-    insertLink({
-      title: 'Read the Docs',
-      url: 'https://docs.meteor.com'
-    });
-
-    insertLink({
-      title: 'Discussions',
-      url: 'https://forums.meteor.com'
-    });
-  }
 });

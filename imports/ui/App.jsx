@@ -38,7 +38,7 @@ function ProductsPage() {
       render: (_, data) => {
         return (
           <>
-            <Link to={`/admin/products-edit/${data._id}`}>
+            <Link to={`/products-edit/${data._id}`}>
               <Button type="warning">Redaktə et</Button>
             </Link>
             <Popconfirm
@@ -73,7 +73,7 @@ function ProductsPage() {
     <>
       <h1>
         Maşınlar
-        <Link to="/admin/products-add">
+        <Link to="/products-add">
           <Button type="primary">Yeni</Button>
         </Link>
       </h1>
@@ -105,10 +105,10 @@ function MainLayout() {
         <br></br>
         <Menu>
           <Menu.Item>
-            <NavLink to="/admin/products">Maşınlar</NavLink>
+            <NavLink to="/products">Maşınlar</NavLink>
           </Menu.Item>
           <Menu.Item>
-            <NavLink to="/admin/orders">Sifarişlər</NavLink>
+            <NavLink to="/orders">Sifarişlər</NavLink>
           </Menu.Item>
         </Menu>
       </div>
@@ -118,40 +118,55 @@ function MainLayout() {
     </>
   );
 }
-function ProductAddPage() {
-  const navigate = useNavigate();
-  async function onFinish(values) {
-    values._id = Random.id();
-    values.imageIds = values.imageIds.fileList.map(
-      (file) => file.originFileObj
-    );
+
+async function onProductFinish(values, callback) {
+  console.log("values",values)
+  if(values.imageIds.fileList){
+    values.imageIds = values.imageIds.fileList.map((file) => file.originFileObj);
     for (let index = 0; index < values.imageIds.length; index++) {
       const file = values.imageIds[index];
       console.log("file", file);
-      const fileObj = await uploadToServer({
-        file,
-        other: {
-          meta: {
-            product_id: values._id,
+      if(file){
+        const fileObj = await uploadToServer({
+          file,
+
+          other: {
+            meta: {
+              product_id: values._id,
+            },
           },
-        },
-      });
-      console.log("fileObj", fileObj);
+        });
+      } 
+      
     }
-    console.log("values", values);
-    Meteor.call("modify_product", values, (err, res) => {
-      if (err) {
-        console.log(err);
-      }
-      if (res) {
-        notification.success({ message: "Uğurla yaradıldı" });
-        navigate("/admin/products");
-      }
-    });
   }
+  
+  Meteor.call("modify_product", values, (err, res) => {
+    if (err) {
+      console.log(err);
+    }
+    if (res) {
+      notification.success({ message: "Uğurla modifikasiya edildi" });
+      callback();
+    }
+  });
+}
+function ProductAddPage() {
+  const navigate = useNavigate();
+
   return (
-    <Form name="basic" onFinish={onFinish} layout="vertical" autoComplete="off">
-      <h1>Maşın əlavəsi</h1>
+    <Form
+      name="basic"
+      onFinish={(values) => {
+        values._id = Random.id();
+        onProductFinish(values, (values) => {
+          navigate("/products");
+        });
+      }}
+      layout="vertical"
+      autoComplete="off"
+    >
+      <h1>Maşın</h1>
       <Form.Item
         label="Maşının adı"
         name="name"
@@ -236,57 +251,30 @@ function ProductAddPage() {
 function ProductEditPage() {
   const { _id } = useParams();
   const navigate = useNavigate();
-  const [loading,setLoading]=React.useState(true)
+  const [loading, setLoading] = React.useState(true);
   const { product } = useTracker(() => {
-    Meteor.subscribe("get.products.all", { _id },(err,res)=>{
-      setLoading(false)
+    Meteor.subscribe("get.products.all", { _id }, (err, res) => {
+      setLoading(false);
     });
     return {
       product: ProductsCol.findOne({ _id }),
     };
   }, []);
   if (!product || loading) return <h1>Yüklənir...</h1>;
-  async function onFinish(values) {
-    values._id = _id;
-    values.imageIds = values.imageIds.fileList.map(
-      (file) => file.originFileObj
-    );
-    for (let index = 0; index < values.imageIds.length; index++) {
-
-      const file = values.imageIds[index];
-      console.log("file",file)
-      if(file){
-        const fileObj = await uploadToServer({
-          file,
-          other: {
-            meta: {
-              product_id: values._id,
-            },
-          },
-        });
-      }
-      
-    }
-    Meteor.call("modify_product", values, (err, res) => {
-      if (err) {
-        console.log(err);
-      }
-      if (res) {
-        notification.success({ message: "Uğurla yaradıldı" });
-        navigate("/admin/products");
-      }
-    });
-  }
-  console.log("product",product)
   return (
     <Form
       initialValues={product}
       name="basic"
-      onFinish={onFinish}
+      onFinish={(values)=>{
+        values._id=product._id
+        onProductFinish(values, () => {
+          navigate("/products");
+        });
+      }}
       layout="vertical"
       autoComplete="off"
     >
-      <h1>Maşın əlavəsi</h1>
+      <h1>Maşın</h1>
       <Form.Item
         label="Maşının adı"
         name="name"
@@ -319,13 +307,20 @@ function ProductEditPage() {
           multiple={true}
           listType="picture-card"
           accept="image/*"
-          defaultFileList={FilesCol.find({"meta.product_id":product._id}).fetch().map(a=>{
-            console.log("a",a)
-            return {
-              uid: Math.random()*1000,
-              url:FilesCol.findOne({_id:a._id}).link()
-            }
-          })}
+          onChange={(a, b) => {
+            Meteor.call("remove_files", [a.file._id]);
+            console.log("a,b", a, b);
+          }}
+          defaultFileList={FilesCol.find({ "meta.product_id": product._id })
+            .fetch()
+            .map((a) => {
+              console.log("a", a);
+              return {
+                _id: a._id,
+                uid: Math.random() * 1000,
+                url: FilesCol.findOne({ _id: a._id }).link(),
+              };
+            })}
         >
           <Button>Yüklə</Button>
         </Upload>
@@ -378,7 +373,7 @@ function ProductEditPage() {
 export const App = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="admin" exact element={<MainLayout></MainLayout>}>
+      <Route path="/" exact element={<MainLayout></MainLayout>}>
         <Route path="products" exact element={<ProductsPage />} />
 
         <Route path="products-add" exact element={<ProductAddPage />} />
