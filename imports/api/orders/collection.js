@@ -1,0 +1,1 @@
+export const OrdersCol=new Mongo.Collection("orders")
