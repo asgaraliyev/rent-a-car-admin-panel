@@ -45,7 +45,6 @@ export async function onProductFinish(values, callback) {
     );
     for (let index = 0; index < values.imageIds.length; index++) {
       const file = values.imageIds[index];
-      console.log("file", file);
       if (file) {
         const fileObj = await uploadToServer({
           file,
@@ -71,10 +70,54 @@ export async function onProductFinish(values, callback) {
   });
 }
 export async function onOrderFinish(values,callback){
-  console.log("values",values)
   if(values.date_range[0].toDate)values.date_range[0]=values.date_range[0].toDate()
   if(values.date_range[1].toDate)values.date_range[1]=values.date_range[1].toDate()
   Meteor.call("modify_order", values, (err, res) => {
+    if (err) {
+      console.log(err);
+    }
+    if (res) {
+      notification.success({ message: "Uğurla modifikasiya edildi" });
+      callback();
+    }
+  });
+}
+export async function onCustomerFinish(values,callback){
+  values.birth_date=values.birth_date.toDate()
+  Meteor.call("modify_customer", values, (err, res) => {
+    if (err) {
+      console.log(err);
+    }
+    if (res) {
+      notification.success({ message: "Uğurla modifikasiya edildi" });
+      callback();
+    }
+  });
+}
+
+
+export async function onBannerFinish(values, callback) {
+  if (values.imageIds?.fileList) {
+    values.imageIds = values.imageIds.fileList.map(
+      (file) => file.originFileObj
+    );
+    for (let index = 0; index < values.imageIds.length; index++) {
+      const file = values.imageIds[index];
+      if (file) {
+        const fileObj = await uploadToServer({
+          file,
+
+          other: {
+            meta: {
+              banner_id: values._id,
+            },
+          },
+        });
+      }
+    }
+  }
+
+  Meteor.call("modify_banner", values, (err, res) => {
     if (err) {
       console.log(err);
     }

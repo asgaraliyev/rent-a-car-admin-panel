@@ -1,0 +1,1 @@
+export const BannersCol=new Mongo.Collection("banner")

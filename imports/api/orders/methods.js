@@ -12,7 +12,6 @@ function update_order(data) {
 
 }
 function add_order(data) {
-  data.slug=slugify(data.firstname+data.lastname)
   OrdersCol.insert(data);
   return OrdersCol.findOne({ _id: data._id });
 }

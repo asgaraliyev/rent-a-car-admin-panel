@@ -46,6 +46,20 @@ export function MenuArea() {
         </Menu.Item>
         <Menu.Item
           onClick={() => {
+            onNavigate("/customers");
+          }}
+        >
+          Müştərilər
+        </Menu.Item>
+        <Menu.Item
+          onClick={() => {
+            onNavigate("/banners");
+          }}
+        >
+          Bannerlər
+        </Menu.Item>
+        <Menu.Item
+          onClick={() => {
             onNavigate("/requests");
           }}
         >

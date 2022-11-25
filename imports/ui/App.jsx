@@ -23,14 +23,20 @@ import { uploadToServer } from "../helpers/functions";
 import ProductsCol from "../api/products/collection";
 import FilesCol from "../api/files/collection";
 import { MenuArea } from "./components/MenuArea";
-import { ProductsPage } from "./pages/Products";
-import { ProductAddPage } from "./pages/ProductAdd";
-import { ProductEditPage } from "./pages/ProductEdit";
-import { RequestsPage } from "./pages/Requests";
-import { SingleRequest } from "./pages/SingleRequest";
-import { OrdersPage } from "./pages/Orders";
-import { OrderAddPage } from "./pages/OrdersAdd";
-import { OrderEditPage } from "./pages/OrdersEdit";
+import { ProductsPage } from "./pages/product/Products";
+import { ProductAddPage } from "./pages/product/ProductAdd";
+import { ProductEditPage } from "./pages/product/ProductEdit";
+import { RequestsPage } from "./pages/request/Requests";
+import { SingleRequest } from "./pages/request/SingleRequest";
+import { OrdersPage } from "./pages/order/Orders";
+import { OrderAddPage } from "./pages/order/OrdersAdd";
+import { OrderEditPage } from "./pages/order/OrdersEdit";
+import { CustomersParge } from "./pages/customer/Customers";
+import { CustomerAddPage } from "./pages/customer/CustomerAdd";
+import { CustomerEditPage } from "./pages/customer/CustomerEdit";
+import { BannersParge } from "./pages/banner/Banners";
+import { BannerEditPage } from "./pages/banner/BannerEdit";
+import { BannerAddPage } from "./pages/banner/BannerAdd";
 
 function MainLayout() {
   return (
@@ -50,8 +56,14 @@ export const App = () => (
         <Route path="products" exact element={<ProductsPage />} />
         <Route path="products-add" exact element={<ProductAddPage />} />
         <Route path="orders-add" exact element={<OrderAddPage />} />
+        <Route path="customer-add" exact element={<CustomerAddPage />} />
+        <Route path="banner-add" exact element={<BannerAddPage />} />
         <Route path="orders-edit/:_id" exact element={<OrderEditPage />} />
+        <Route path="customers-edit/:_id" exact element={<CustomerEditPage />} />
+        <Route path="banners-edit/:_id" exact element={<BannerEditPage />} />
         <Route path="products-edit/:_id" exact element={<ProductEditPage />} />
+        <Route path="customers" exact element={<CustomersParge />} />
+        <Route path="banners" exact element={<BannersParge />} />
         <Route path="orders" exact element={<OrdersPage />} />
         <Route path="requests" exact element={<RequestsPage />} />
         <Route path="/requests/:_id" exact element={<SingleRequest />} />
