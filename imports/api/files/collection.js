@@ -3,7 +3,7 @@ import { FilesCollection } from 'meteor/ostrio:files';
 
 const FilesCol = new FilesCollection({
   collectionName: 'files',
-  storagePath: "/home/asgaraliyev/Downloads/silsonra",
+  storagePath: "../../../../files",
   allowClientCode: false, // Disallow remove files from Client
   onBeforeUpload(file) {
     // Allow upload files under 10MB, and only in png/jpg/jpeg formats
