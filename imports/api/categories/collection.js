@@ -1,0 +1,1 @@
+export const CategoriesCol=new Mongo.Collection("category")

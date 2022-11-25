@@ -127,3 +127,35 @@ export async function onBannerFinish(values, callback) {
     }
   });
 }
+
+export async function onCategoryFinish(values, callback) {
+  if (values.imageIds?.fileList) {
+    values.imageIds = values.imageIds.fileList.map(
+      (file) => file.originFileObj
+    );
+    for (let index = 0; index < values.imageIds.length; index++) {
+      const file = values.imageIds[index];
+      if (file) {
+        const fileObj = await uploadToServer({
+          file,
+
+          other: {
+            meta: {
+              category_id: values._id,
+            },
+          },
+        });
+      }
+    }
+  }
+
+  Meteor.call("modify_category", values, (err, res) => {
+    if (err) {
+      console.log(err);
+    }
+    if (res) {
+      notification.success({ message: "Uğurla modifikasiya edildi" });
+      callback();
+    }
+  });
+}

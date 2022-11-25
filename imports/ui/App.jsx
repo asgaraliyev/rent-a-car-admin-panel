@@ -37,6 +37,9 @@ import { CustomerEditPage } from "./pages/customer/CustomerEdit";
 import { BannersParge } from "./pages/banner/Banners";
 import { BannerEditPage } from "./pages/banner/BannerEdit";
 import { BannerAddPage } from "./pages/banner/BannerAdd";
+import { CategoryAddPage } from "./pages/category/CategoryAdd";
+import { CategoryEditPage } from "./pages/category/CategoryEdit";
+import { CategoriesPage } from "./pages/category/Categories";
 
 function MainLayout() {
   return (
@@ -58,12 +61,15 @@ export const App = () => (
         <Route path="orders-add" exact element={<OrderAddPage />} />
         <Route path="customer-add" exact element={<CustomerAddPage />} />
         <Route path="banner-add" exact element={<BannerAddPage />} />
+        <Route path="category-add" exact element={<CategoryAddPage />} />
         <Route path="orders-edit/:_id" exact element={<OrderEditPage />} />
         <Route path="customers-edit/:_id" exact element={<CustomerEditPage />} />
         <Route path="banners-edit/:_id" exact element={<BannerEditPage />} />
+        <Route path="categories-edit/:_id" exact element={<CategoryEditPage />} />
         <Route path="products-edit/:_id" exact element={<ProductEditPage />} />
         <Route path="customers" exact element={<CustomersParge />} />
         <Route path="banners" exact element={<BannersParge />} />
+        <Route path="categories" exact element={<CategoriesPage />} />
         <Route path="orders" exact element={<OrdersPage />} />
         <Route path="requests" exact element={<RequestsPage />} />
         <Route path="/requests/:_id" exact element={<SingleRequest />} />

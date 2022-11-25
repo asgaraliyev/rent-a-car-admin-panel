@@ -53,6 +53,13 @@ export function MenuArea() {
         </Menu.Item>
         <Menu.Item
           onClick={() => {
+            onNavigate("/categories");
+          }}
+        >
+          Kateqoriyalar
+        </Menu.Item>
+        <Menu.Item
+          onClick={() => {
             onNavigate("/banners");
           }}
         >

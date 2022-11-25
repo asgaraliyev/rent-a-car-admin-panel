@@ -17,6 +17,7 @@ import "../imports/api/products/publications"
 
 import "../imports/api/customers/index"
 import "../imports/api/banners/index"
+import "../imports/api/categories/index"
 
 import ProductsCol from '../imports/api/products/collection';
 import FilesCol from '../imports/api/files/collection';
