@@ -1,0 +1,1 @@
+export const RequestsCol=new Mongo.Collection("requests")
