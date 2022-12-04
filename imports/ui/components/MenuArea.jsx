@@ -72,6 +72,13 @@ export function MenuArea() {
         >
           İstəklər
         </Menu.Item>
+        <Menu.Item
+          onClick={() => {
+            onNavigate("/settings");
+          }}
+        >
+          Parametrler
+        </Menu.Item>
       </Menu>
     </div>
   );

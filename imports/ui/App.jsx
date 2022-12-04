@@ -40,6 +40,7 @@ import { BannerAddPage } from "./pages/banner/BannerAdd";
 import { CategoryAddPage } from "./pages/category/CategoryAdd";
 import { CategoryEditPage } from "./pages/category/CategoryEdit";
 import { CategoriesPage } from "./pages/category/Categories";
+import { SettingsPage } from "./pages/settings/Settings";
 
 function MainLayout() {
   return (
@@ -72,6 +73,7 @@ export const App = () => (
         <Route path="categories" exact element={<CategoriesPage />} />
         <Route path="orders" exact element={<OrdersPage />} />
         <Route path="requests" exact element={<RequestsPage />} />
+        <Route path="settings" exact element={<SettingsPage />} />
         <Route path="/requests/:_id" exact element={<SingleRequest />} />
         <Route path="*" exact element={<h1>Səhifə tapılmadı</h1>} />
       </Route>

@@ -22,9 +22,10 @@ import "../imports/api/categories/index"
 import ProductsCol from '../imports/api/products/collection';
 import FilesCol from '../imports/api/files/collection';
 import { request_methods } from '../imports/api/requests/methods';
+import { CategoriesCol } from '../imports/api/categories/collection';
+import { BannersCol } from '../imports/api/banners/collection';
 function productsController(req, res, next)  {
   res.writeHead(200);
-  console.log("req",req.query)
   let products=ProductsCol.find().fetch()
   products=products.map(product=>{
     product.imageIds=FilesCol.find({"meta.product_id":product._id}).fetch().map(file=>{
@@ -41,6 +42,19 @@ function newRequestController(req,res,next){
   request_methods.add_request(JSON.parse(data))
   res.end("done")
 }
+function categoriesController(req,res,next){
+  res.end(JSON.stringify(CategoriesCol.find().fetch()))
+}
+function bannersController(req,res,next){
+  return res.end(JSON.stringify(BannersCol.find().fetch().map(banner=>{
+    console.log(banner)
+    banner.imageIds=FilesCol.find({"meta.banner_id":banner._id}).fetch().map(file=>{
+      return FilesCol.findOne({_id:file._id}).link()
+    })
+    banner.mainImageId=banner.imageIds[0]
+    return banner
+  })))
+}
 WebApp.rawConnectHandlers.use(function(req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "Authorization,Content-Type");
@@ -49,11 +63,15 @@ WebApp.rawConnectHandlers.use(function(req, res, next) {
 WebApp.connectHandlers.use((req, res, next) => {
 
   if (req.url.includes('/api/products') ) {
-  console.log(req.url.includes('/api/products'),req.url,req.query)
-
     productsController(req,res,next)
   } else if(req.url.includes('/api/new-request')){
     newRequestController(req,res,next)
+  }
+  else if(req.url.includes('/api/categories')){
+    categoriesController(req,res,next)
+  }
+  else if(req.url.includes('/api/banners')){
+    bannersController(req,res,next)
   }
   else {
     next();

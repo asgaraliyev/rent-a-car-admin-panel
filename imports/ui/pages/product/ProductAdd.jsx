@@ -1,11 +1,18 @@
 import { useNavigate } from "react-router";
 import React from "react";
-import { Button, Space, Form, Input, InputNumber, Upload } from "antd";
+import { Button, Space, Form, Input, InputNumber, Upload, Select } from "antd";
 import { onProductFinish } from "../../../helpers/functions";
 import { Random } from "meteor/random";
+import { CategoriesCol } from "../../../api/categories/collection";
+import {useTracker} from "meteor/react-meteor-data"
 export function CommonFields() {
+  const { categories } = useTracker(() => {
+    Meteor.subscribe("get.categories.all");
+    return { categories: CategoriesCol.find().fetch() };
+  }, []);
   return (
     <>
+
       <Form.Item
         label="Markası"
         name="marka"
@@ -17,6 +24,27 @@ export function CommonFields() {
         ]}
       >
         <Input />
+      </Form.Item>
+      <Form.Item
+        name="category_id"
+        label="Kateqoriyası"
+        rules={[
+          {
+            required: true,
+            message: "Zəhmət olmasa kateqoriyası daxil edin!",
+          },
+        ]}
+      >
+        <Select
+          style={{ width: "100%" }}
+          options={categories.map((cat) => {
+            return {
+              label: cat.name,
+              value: cat._id,
+            };
+          })}
+          placeholder="Kateqoriyanı seçin"
+        />
       </Form.Item>
       <Form.Item
         label="Qeydiyyat nişanı"

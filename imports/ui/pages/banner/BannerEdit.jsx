@@ -26,6 +26,12 @@ export function BannerCommonFields({}) {
       >
         <Input />
       </Form.Item>
+      <Form.Item
+        label="Link"
+        name="link"
+      >
+        <Input />
+      </Form.Item>
     </>
   );
 }
