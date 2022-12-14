@@ -1,11 +1,10 @@
-
 module.exports = {
   servers: {
       one: {
           // TODO: set host address, username, and authentication method
-          host: '84.46.246.156',
+          host: '46.101.115.120',
           username: 'root',
-          password:"Esger2048"
+          password:"1"
           // pem: './path/to/pem'
           // password: 'Asim-211'
           // or neither for authenticate from ssh-agent
@@ -35,9 +34,9 @@ module.exports = {
       env: {
           // TODO: Change to your app's url
           // If you are using ssl, it needs to start with https://
-          ROOT_URL: 'https://84.46.246.156',
+          ROOT_URL: 'https://46.101.115.120',
           PORT: 3000,
-          MONGO_URL: 'mongodb://84.46.246.156:27017/bms',
+          MONGO_URL: 'mongodb://46.101.115.120:27017/bms',
       },
 
       volumes: {
@@ -52,10 +51,10 @@ module.exports = {
               'RUN apt-get update && apt-get install -y graphicsmagick'
           ],
           // imagePort: 80, // (default: 80, some images EXPOSE different ports)
-          args: [
-              '-e',
-              'VIRTUAL_HOST=request.cubicsbms.com,landau.cubicsbms.com'
-          ]
+          // args: [
+          //     '-e',
+          //     'VIRTUAL_HOST=request.cubicsbms.com,landau.cubicsbms.com'
+          // ]
       },
 
       // This is the maximum time in seconds it will wait
