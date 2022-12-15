@@ -34,7 +34,7 @@ module.exports = {
       env: {
           // TODO: Change to your app's url
           // If you are using ssl, it needs to start with https://
-          ROOT_URL: 'https://46.101.115.120',
+          ROOT_URL: 'https://admin.rumrentacar.az',
           PORT: 3000,
           MONGO_URL: 'mongodb://46.101.115.120:27017/bms',
       },
@@ -51,10 +51,10 @@ module.exports = {
               'RUN apt-get update && apt-get install -y graphicsmagick'
           ],
           // imagePort: 80, // (default: 80, some images EXPOSE different ports)
-          // args: [
-          //     '-e',
-          //     'VIRTUAL_HOST=request.cubicsbms.com,landau.cubicsbms.com'
-          // ]
+          args: [
+              '-e',
+              'VIRTUAL_HOST=admin.rumrentacar.az'
+          ]
       },
 
       // This is the maximum time in seconds it will wait
@@ -68,3 +68,8 @@ module.exports = {
       enableUploadProgressBar: true
   }
 };
+// sifarisi yaradanda eger musterinin ratingi azdisa qirmizi cixsin yazsinki buna verme
+// header daha tund olsun
+// contact bolmesinde linkedin facebook whatsapp instagrami daha boyuk formada oz iconlari ile qoymaq
+// header qapqara
+// header de yazilar boyuk olmalidir
