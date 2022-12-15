@@ -23,10 +23,10 @@ export function BannersParge() {
                 <Button type="warning">Redaktə et</Button>
               </Link>
 
-              {/* <Popconfirm
+              <Popconfirm
                 title="Bu sifarişı silməyə əminsiniz?"
                 onConfirm={() => {
-                  Meteor.call("remove_order", [data._id], (err, res) => {
+                  Meteor.call("remove_banner", [data._id], (err, res) => {
                     notification.success({ message: "Uğurla silindi" });
                   });
                 }}
@@ -34,7 +34,7 @@ export function BannersParge() {
                 cancelText="Xeyr"
               >
                 <Button type="danger">Sil</Button>
-              </Popconfirm> */}
+              </Popconfirm>
             </>
           );
         },

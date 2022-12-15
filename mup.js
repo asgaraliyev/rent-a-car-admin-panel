@@ -69,7 +69,7 @@ module.exports = {
   }
 };
 // sifarisi yaradanda eger musterinin ratingi azdisa qirmizi cixsin yazsinki buna verme
-// header daha tund olsun
-// contact bolmesinde linkedin facebook whatsapp instagrami daha boyuk formada oz iconlari ile qoymaq
+// header daha tund olsun+
+// contact bolmesinde linkedin facebook whatsapp instagrami daha boyuk formada oz iconlari ile qoymaq+
 // header qapqara
 // header de yazilar boyuk olmalidir

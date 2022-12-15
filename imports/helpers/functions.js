@@ -1,4 +1,5 @@
 import { notification } from "antd";
+import { CustomersCol } from "../api/customers/collection";
 import FilesCol from "../api/files/collection";
 
 export function uploadToServer({ Col = FilesCol, file, other }) {
@@ -72,6 +73,11 @@ export async function onProductFinish(values, callback) {
 export async function onOrderFinish(values,callback){
   if(values.date_range[0].toDate)values.date_range[0]=values.date_range[0].toDate()
   if(values.date_range[1].toDate)values.date_range[1]=values.date_range[1].toDate()
+  const customer_doc=CustomersCol.findOne({_id:values.customer_id})
+  if(customer_doc.rating<=1){
+    notification.error({message:"Rating çox azdı maşını verə bilmərik"})
+    return
+  }
   Meteor.call("modify_order", values, (err, res) => {
     if (err) {
       console.log(err);

@@ -115,7 +115,7 @@ export function OrderCommonFields({  }) {
           style={{ width: "100%" }}
           options={customers.map((p) => {
             return {
-              label: `${p.firstname} ${p.lastname} ${p.father_name}`,
+              label: `${p.firstname} ${p.lastname}/rating:${p.rating}/${p.note}`,
               value: p._id,
             };
           })}
