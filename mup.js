@@ -4,7 +4,7 @@ module.exports = {
           // TODO: set host address, username, and authentication method
           host: '46.101.115.120',
           username: 'root',
-          password:"1"
+          password:"Cubics-211"
           // pem: './path/to/pem'
           // password: 'Asim-211'
           // or neither for authenticate from ssh-agent
