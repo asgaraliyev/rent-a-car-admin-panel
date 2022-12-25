@@ -23,3 +23,5 @@ react-meteor-data       # React higher-order component for reactively tracking M
 ostrio:files
 tracker
 reywood:publish-composite
+accounts-base
+accounts-password

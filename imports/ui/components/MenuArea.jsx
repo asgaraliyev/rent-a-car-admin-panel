@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu } from "antd";
+import { Button, Menu } from "antd";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router-dom";
 
@@ -72,12 +72,13 @@ export function MenuArea() {
         >
           İstəklər
         </Menu.Item>
+
         <Menu.Item
           onClick={() => {
-            onNavigate("/settings");
+            Meteor.logout();
           }}
         >
-          Parametrler
+          <Button type="danger">Hesabdan çıx</Button>
         </Menu.Item>
       </Menu>
     </div>

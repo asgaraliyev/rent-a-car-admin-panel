@@ -24,6 +24,20 @@ import FilesCol from '../imports/api/files/collection';
 import { request_methods } from '../imports/api/requests/methods';
 import { CategoriesCol } from '../imports/api/categories/collection';
 import { BannersCol } from '../imports/api/banners/collection';
+const users=[
+  {
+    username:"rufet",
+    password:"Balakhani_702"
+  }
+]
+
+Meteor.startup(()=>{
+  users.map(user=>{
+    if(!Meteor.users.findOne({username:user.username})){
+      Accounts.createUser(user)
+    }
+  })
+})
 function productsController(req, res, next)  {
   res.writeHead(200);
   let products=ProductsCol.find().fetch()

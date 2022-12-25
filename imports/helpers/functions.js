@@ -70,12 +70,12 @@ export async function onProductFinish(values, callback) {
     }
   });
 }
-export async function onOrderFinish(values,callback){
-  if(values.date_range[0].toDate)values.date_range[0]=values.date_range[0].toDate()
-  if(values.date_range[1].toDate)values.date_range[1]=values.date_range[1].toDate()
-  const customer_doc=CustomersCol.findOne({_id:values.customer_id})
-  if(customer_doc.rating<=1){
-    notification.error({message:"Rating çox azdı maşını verə bilmərik"})
+export async function onOrderFinish(values, callback) {
+  if (values.date_range[0].toDate) values.date_range[0] = values.date_range[0].toDate()
+  if (values.date_range[1].toDate) values.date_range[1] = values.date_range[1].toDate()
+  const customer_doc = CustomersCol.findOne({ _id: values.customer_id })
+  if (customer_doc.rating <= 1) {
+    notification.error({ message: "Rating çox azdı maşını verə bilmərik" })
     return
   }
   Meteor.call("modify_order", values, (err, res) => {
@@ -88,8 +88,8 @@ export async function onOrderFinish(values,callback){
     }
   });
 }
-export async function onCustomerFinish(values,callback){
-  values.birth_date=values.birth_date.toDate()
+export async function onCustomerFinish(values, callback) {
+  values.birth_date = values.birth_date.toDate()
   Meteor.call("modify_customer", values, (err, res) => {
     if (err) {
       console.log(err);
@@ -164,4 +164,21 @@ export async function onCategoryFinish(values, callback) {
       callback();
     }
   });
+}
+export const authorization = () => {
+  const { navigate } = this
+  const res = {
+    ready: false,
+    user: Meteor.user(),
+  };
+  if (res.user === undefined) {
+    res.ready = false;
+  } else if (res.user === null) {
+    console.log("user null du")
+    navigate("/login");
+    res.ready = true;
+  } else if (res.user) {
+    res.ready = false;
+  }
+  return res;
 }

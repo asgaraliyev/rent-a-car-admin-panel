@@ -15,6 +15,7 @@ import {
   Button,
   Form,
   notification,
+  Spin,
 } from "antd";
 import { Random } from "meteor/random";
 import { useTracker } from "meteor/react-meteor-data";
@@ -41,15 +42,41 @@ import { CategoryAddPage } from "./pages/category/CategoryAdd";
 import { CategoryEditPage } from "./pages/category/CategoryEdit";
 import { CategoriesPage } from "./pages/category/Categories";
 import { SettingsPage } from "./pages/settings/Settings";
-
+import { Login } from "./pages/login/Login";
 function MainLayout() {
+  const [isMenuShown, setIsMenuShown] = React.useState(false);
+  const props = useTracker(() => {
+    const res = {
+      ready: false,
+      user: Meteor.user(),
+    };
+     if ( window.location.pathname==="/login") {
+      console.log('54')
+      
+      res.ready = true;
+    } 
+    else if (res.user === undefined) {
+      console.log('59')
+      res.ready = false;
+    } else if (res.user === null && window.location.pathname!=="/login") {
+      console.log('62')
+      res.ready = true;
+      window.location.href = "/login";
+    }
+    else if (res.user) {
+      console.log('67')
+      res.ready = true;
+      setIsMenuShown(true);
+    }
+    return res;
+  }, []);
   return (
-    <>
-      <MenuArea/>
+    <Spin spinning={!props.ready}>
+      {isMenuShown ? <MenuArea /> : null}
       <main>
         <Outlet />
       </main>
-    </>
+    </Spin>
   );
 }
 
@@ -57,6 +84,7 @@ export const App = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" exact element={<MainLayout></MainLayout>}>
+        <Route path="/" exact element={<ProductsPage />} />
         <Route path="products" exact element={<ProductsPage />} />
         <Route path="products-add" exact element={<ProductAddPage />} />
         <Route path="orders-add" exact element={<OrderAddPage />} />
@@ -64,9 +92,17 @@ export const App = () => (
         <Route path="banner-add" exact element={<BannerAddPage />} />
         <Route path="category-add" exact element={<CategoryAddPage />} />
         <Route path="orders-edit/:_id" exact element={<OrderEditPage />} />
-        <Route path="customers-edit/:_id" exact element={<CustomerEditPage />} />
+        <Route
+          path="customers-edit/:_id"
+          exact
+          element={<CustomerEditPage />}
+        />
         <Route path="banners-edit/:_id" exact element={<BannerEditPage />} />
-        <Route path="categories-edit/:_id" exact element={<CategoryEditPage />} />
+        <Route
+          path="categories-edit/:_id"
+          exact
+          element={<CategoryEditPage />}
+        />
         <Route path="products-edit/:_id" exact element={<ProductEditPage />} />
         <Route path="customers" exact element={<CustomersParge />} />
         <Route path="banners" exact element={<BannersParge />} />
@@ -75,6 +111,7 @@ export const App = () => (
         <Route path="requests" exact element={<RequestsPage />} />
         <Route path="settings" exact element={<SettingsPage />} />
         <Route path="/requests/:_id" exact element={<SingleRequest />} />
+        <Route path="login" exact element={<Login />} />
         <Route path="*" exact element={<h1>Səhifə tapılmadı</h1>} />
       </Route>
     </Routes>
