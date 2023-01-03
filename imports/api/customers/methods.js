@@ -1,6 +1,6 @@
 import FilesCol from "../files/collection";
 import {CustomersCol} from "../customers/collection";
-import slugify from "slugify";
+import { makeSlug } from "../../helpers/functions";
 function update_customer(data) {
     const p_id=data._id
     delete data._id
@@ -12,7 +12,7 @@ function update_customer(data) {
 
 }
 function add_customer(data) {
-  data.slug=slugify(data.firstname+data.lastname)
+  data.slug=makeSlug(data.firstname+data.lastname)
   CustomersCol.insert(data);
   return CustomersCol.findOne({ _id: data._id });
 }

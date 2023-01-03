@@ -1,6 +1,6 @@
 import FilesCol from "../files/collection";
 import {CategoriesCol} from "../categories/collection";
-import slugify from "slugify";
+import { makeSlug } from "../../helpers/functions";
 function update_category(data) {
     const p_id=data._id
     delete data._id
@@ -12,7 +12,7 @@ function update_category(data) {
 
 }
 function add_category(data) {
-  data.slug=slugify(data.name)
+  data.slug=makeSlug(data.name)
   CategoriesCol.insert(data);
   return CategoriesCol.findOne({ _id: data._id });
 }

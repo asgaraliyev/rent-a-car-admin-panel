@@ -1,6 +1,6 @@
 import FilesCol from "../files/collection";
 import {BannersCol} from "../banners/collection";
-import slugify from "slugify";
+import { makeSlug } from "../../helpers/functions";
 function update_banner(data) {
     const p_id=data._id
     delete data._id
@@ -12,7 +12,7 @@ function update_banner(data) {
 
 }
 function add_banner(data) {
-  data.slug=slugify(data.name)
+  data.slug=makeSlug(data.name)
   BannersCol.insert(data);
   return BannersCol.findOne({ _id: data._id });
 }

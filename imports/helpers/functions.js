@@ -1,7 +1,11 @@
 import { notification } from "antd";
 import { CustomersCol } from "../api/customers/collection";
 import FilesCol from "../api/files/collection";
+import slugify from "slugify";
 
+export function makeSlug(text){
+  return slugify(text)+`${parseInt(Math.random()*10000)}`
+}
 export function uploadToServer({ Col = FilesCol, file, other }) {
   return new Promise((resolve, reject) => {
     if (!file) {

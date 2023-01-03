@@ -1,6 +1,5 @@
 import FilesCol from "../files/collection";
 import {OrdersCol} from "../orders/collection";
-import slugify from "slugify";
 function update_order(data) {
     const p_id=data._id
     delete data._id
