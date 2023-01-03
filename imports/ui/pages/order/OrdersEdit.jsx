@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import React from "react";
 import { useTracker } from "meteor/react-meteor-data";
-import { DatePicker } from "antd";
+import { DatePicker, notification } from "antd";
 const { RangePicker } = DatePicker;
 import { Button, Space, Form, Input, InputNumber, Upload, Select } from "antd";
 import { Random } from "meteor/random";
@@ -10,13 +10,15 @@ import { onOrderFinish } from "../../../helpers/functions";
 import { OrdersCol } from "../../../api/orders/collection";
 import moment from "moment";
 import { CustomersCol } from "../../../api/customers/collection";
-export function OrderCommonFields({  }) {
-  const { products,customers } = useTracker(() => {
+import { Printer } from "../../../helpers/Printer";
+export function OrderCommonFields({ onMuqavileClick, }) {
+  const { products, customers } = useTracker(() => {
     Meteor.subscribe("get.products.all", {});
     Meteor.subscribe("get.customers.all", {});
-    return { products: ProductsCol.find().fetch(),customers:CustomersCol.find().fetch() };
+    return { products: ProductsCol.find().fetch(), customers: CustomersCol.find().fetch() };
   }, []);
-  if (!products.length)return <h1>Sifariş üçün ən azı 1 ədəd maşın daxil etməlisiniz</h1>;
+  if (!products.length) return <h1>Sifariş üçün ən azı 1 ədəd maşın daxil etməlisiniz</h1>;
+
   return (
     <>
       <span>
@@ -26,13 +28,13 @@ export function OrderCommonFields({  }) {
         <Button type="primary">Yol vərəqəsini çap et</Button>
       </span>
       <span>
-        <Button type="success">Müqaviləni çap et</Button>
+        <Button onClick={onMuqavileClick} type="success">Müqaviləni çap et</Button>
       </span>
 
-  
-     
-  
-     
+
+
+
+
       <Form.Item
         label="Qiymət"
         name="price"
@@ -54,7 +56,7 @@ export function OrderCommonFields({  }) {
       >
         <InputNumber style={{ width: "100%" }} />
       </Form.Item>
-   
+
 
       <Form.Item
         label="Hərəkət ərazisi və istiqaməti"
@@ -107,7 +109,7 @@ export function OrderCommonFields({  }) {
         rules={[
           {
             required: true,
-            message: "Zəhmət olmasa hərəkət ərazisi və istiqaməti daxil edin!",
+            message: "Zəhmət olmasa müştərini daxil edin!",
           },
         ]}
       >
@@ -128,7 +130,7 @@ export function OrderCommonFields({  }) {
 export function OrderEditPage() {
   const navigate = useNavigate();
   const { _id } = useParams();
-  const {  order } = useTracker(() => {
+  const { order } = useTracker(() => {
     Meteor.subscribe("get.orders.all", { _id });
 
     const res = {
@@ -143,7 +145,17 @@ export function OrderEditPage() {
     }
     return res;
   }, []);
-
+  async function onMuqavileClick() {
+    Meteor.call("get_order_pdf_muqavile", _id, async function (err, res) {
+      if (err) {
+        notification.error({ message: "nese sehv getdi" })
+      } else if (res) {
+        const printer = new Printer({ url: `/pdf/permission/permission.html`, isDev: false });
+        await printer.init();
+        await printer.print(res);
+      }
+    })
+  }
   if (!order) return <h1>Sifariş tapılmadı</h1>;
   return (
     <Form
@@ -158,7 +170,7 @@ export function OrderEditPage() {
       layout="vertical"
       autoComplete="off"
     >
-      <OrderCommonFields  />
+      <OrderCommonFields onMuqavileClick={onMuqavileClick} />
       <Form.Item>
         <Button type="primary" htmlType="submit">
           Göndər
