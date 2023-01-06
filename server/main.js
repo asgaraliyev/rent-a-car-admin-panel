@@ -38,6 +38,7 @@ Meteor.startup(()=>{
     }
   })
 })
+
 function productsController(req, res, next)  {
   res.writeHead(200);
   let products=ProductsCol.find().fetch()
@@ -61,19 +62,15 @@ function categoriesController(req,res,next){
 }
 function bannersController(req,res,next){
   return res.end(JSON.stringify(BannersCol.find().fetch().map(banner=>{
-    console.log(banner)
+
     banner.imageIds=FilesCol.find({"meta.banner_id":banner._id}).fetch().map(file=>{
       return FilesCol.findOne({_id:file._id}).link()
     })
     banner.mainImageId=banner.imageIds[0]
+    console.log("banner",banner)
     return banner
   })))
 }
-WebApp.rawConnectHandlers.use(function(req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Authorization,Content-Type");
-  return next();
-})
 WebApp.connectHandlers.use((req, res, next) => {
 
   if (req.url.includes('/api/products') ) {
@@ -92,6 +89,10 @@ WebApp.connectHandlers.use((req, res, next) => {
   }
 });
 
-
+WebApp.rawConnectHandlers.use(function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Authorization,Content-Type");
+  return next();
+});
 Meteor.startup(() => {
 });
