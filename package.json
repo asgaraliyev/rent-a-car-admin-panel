@@ -2,7 +2,7 @@
   "name": "asi-rent-a-car",
   "private": true,
   "scripts": {
-    "start": "meteor  --allow-superuser",
+    "start": "ROOT_URL=https://84.46.246.156:3000  meteor  --allow-superuser",
     "dev": "meteor  --allow-superuser",
     "ssh": "ssh root@46.101.115.120",
     "test": "meteor test --once --driver-package meteortesting:mocha",
