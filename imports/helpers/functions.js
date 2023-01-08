@@ -78,6 +78,7 @@ export async function onProductFinish(values, callback) {
   });
 }
 export async function onOrderFinish(values, callback) {
+  values={...values}
   if (values.date_range[0].toDate) values.date_range[0] = values.date_range[0].toDate()
   if (values.date_range[1].toDate) values.date_range[1] = values.date_range[1].toDate()
   const customer_doc = CustomersCol.findOne({ _id: values.customer_id })
