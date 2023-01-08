@@ -6,6 +6,9 @@ import slugify from "slugify";
 export function makeSlug(text){
   return slugify(text)+`${parseInt(Math.random()*10000)}`
 }
+export function getFileLink(query){
+  return FilesCol.findOne(query).link().replace("https://84.46.246.156:3000/cdn","https://www.rumrentacar.az/cdn")
+}
 export function uploadToServer({ Col = FilesCol, file, other }) {
   return new Promise((resolve, reject) => {
     if (!file) {

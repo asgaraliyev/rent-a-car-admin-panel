@@ -24,6 +24,7 @@ import FilesCol from '../imports/api/files/collection';
 import { request_methods } from '../imports/api/requests/methods';
 import { CategoriesCol } from '../imports/api/categories/collection';
 import { BannersCol } from '../imports/api/banners/collection';
+import { getFileLink } from '../imports/helpers/functions';
 const users=[
   {
     username:"rufet",
@@ -44,7 +45,7 @@ function productsController(req, res, next)  {
   let products=ProductsCol.find().fetch()
   products=products.map(product=>{
     product.imageIds=FilesCol.find({"meta.product_id":product._id}).fetch().map(file=>{
-      const res= FilesCol.findOne({_id:file._id}).link()
+      const res= getFileLink({_id:file._id})
       return res
     })
     product.mainImageId=product.imageIds[0]
@@ -64,7 +65,7 @@ function bannersController(req,res,next){
   return res.end(JSON.stringify(BannersCol.find().fetch().map(banner=>{
 
     banner.imageIds=FilesCol.find({"meta.banner_id":banner._id}).fetch().map(file=>{
-      return FilesCol.findOne({_id:file._id}).link()
+      return getFileLink({_id:file._id})
     })
     banner.mainImageId=banner.imageIds[0]
     console.log("banner",banner)
