@@ -14,9 +14,9 @@ function update_order(data) {
 
 }
 function add_order(data) {
-  let lastOrder = OrdersCol.find().fetch()
-  console.log("lastOrder", lastOrder[lastOrder.length - 1])
-  data.order_number = (lastOrder[lastOrder.length - 1].order_number + 1) || 1
+  // let lastOrder = OrdersCol.find().fetch()
+  // console.log("lastOrder", lastOrder[lastOrder.length - 1])
+  // data.order_number = (lastOrder[lastOrder.length - 1].order_number + 1) || 1
   OrdersCol.insert(data);
   return OrdersCol.findOne({ _id: data._id });
 }
