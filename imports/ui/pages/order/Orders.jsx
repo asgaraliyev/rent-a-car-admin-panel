@@ -3,14 +3,25 @@ import {useTracker} from "meteor/react-meteor-data"
 import {OrdersCol} from "../../../api/orders/collection";
 import { Link } from "react-router-dom";
 import { Button, notification, Popconfirm, Table } from "antd";
+import { CustomersCol } from "../../../api/customers/collection";
 export function OrdersPage() {
     const { orders } = useTracker(() => {
       Meteor.subscribe("get.orders.all");
+      Meteor.subscribe("get.customers.all");
       return {
         orders: OrdersCol.find().fetch(),
       };
     }, []);
-  
+  const customers = CustomersCol.find().fetch()
+  orders.map(order=>{
+    customers.map(customer => {
+      if(order.customer_id === customer._id){
+        return order.firstname = customer.firstname, order.lastname = customer.lastname
+      }
+      
+    })
+  })
+
     const columns = [
       {
         title: "Əməliyyat",
@@ -38,6 +49,16 @@ export function OrdersPage() {
             </>
           );
         },
+      },
+            {
+        title: "Musteri adi",
+        dataIndex: "firstname",
+        key: "name"
+      },
+      {
+        title: "Musteri soyadi",
+        dataIndex: "lastname",
+        key: "surname"
       },
       {
         title: "Qiymet",

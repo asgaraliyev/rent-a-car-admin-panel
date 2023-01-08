@@ -13,6 +13,8 @@ function update_customer(data) {
 }
 function add_customer(data) {
   data.slug=makeSlug(data.firstname+data.lastname)
+  data.phone_number = parseFloat(data.phone_number)
+  data.home_number = parseFloat(data.home_number)
   CustomersCol.insert(data);
   return CustomersCol.findOne({ _id: data._id });
 }

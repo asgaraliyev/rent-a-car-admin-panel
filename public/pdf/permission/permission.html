@@ -729,8 +729,7 @@
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="c13 c8">İMZA; </span><span
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="c13 c8">İMZA; </span><span
             class="c4 c13 c8">_______________</span></p>
     <p class="c3 c6"><span class="c20 c0"></span></p>
     <p class="c3 c6"><span class="c20 c0"></span></p>
@@ -844,8 +843,8 @@
     <p class="c24 c6 c18"><span class="c12 c14"></span></p>
     <p class="c3"><span class="c11">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="c4 c8 c9">7.1.</span><span
             class="c9">&nbsp;</span><span class="c8 c9">“İcarəyə götürən”</span><span>&nbsp;avtomobilin istifadәsinin
-            hәr </span><span class="c8">“1” günü</span><span>&nbsp;üçün </span><span class="c8">____
-            AZN</span><span>&nbsp; olmaqla </span><span class="c8">____</span><span>&nbsp;</span><span
+            hәr </span><span class="c8">“1” günü</span><span>&nbsp;üçün </span><span class="c19 c8">{{order.price}}
+            AZN</span><span>&nbsp; olmaqla </span><span class="c8">{{order.days}}</span><span>&nbsp;</span><span
             class="c8">günlük</span><span>&nbsp;icarəyə götürür.</span></p>
     <p class="c3"><span class="c4 c8 c9">&nbsp; &nbsp; &nbsp; &nbsp; 7.2.</span><span
             class="c8 c9">&nbsp;</span><span>Avtomobil </span><span class="c8 c9">“İcarəyə verən”-ə
@@ -875,7 +874,10 @@
             class="c36 c8">&nbsp;</span></p>
     <p class="c3 c6"><span class="c20 c40 c8 c27"></span></p>
     <p class="c3"><span class="c11 c8">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span
-            class="c13 c8">ödəməlidir. İMZA; </span><span class="c4 c13 c8">_______________</span></p>
+            class="c13 c8">ödəməlidir. <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span> İMZA; </span><span class="c4 c13 c8">_______________</span></p>
     <p class="c3 c6"><span class="c20 c11 c8 c27"></span></p>
     <p class="c3 c6 c18"><span class="c17 c8 c27"></span></p>
     <p class="c3 c6"><span class="c20 c0"></span></p>
@@ -926,7 +928,7 @@
             ŞƏRTLƏRLƏ RAZIYAM.</span></p>
     <p class="c3 c6"><span class="c12 c4 c8"></span></p>
     <p class="c3"><span class="c20 c4 c13 c8">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; RAZILIĞIMI ÖZ İMZAMLA
-            TƏSTİQ EDİRƏM. İMZA; _______________</span></p>
+            TƏSTİQ EDİRƏM. <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span> İMZA; _______________</span></p>
     <p class="c3 c6"><span class="c20 c4 c13 c8"></span></p>
     <p class="c3 c18"><span class="c13 c8">&nbsp;</span></p>
     <p class="c3"><span class="c36 c8">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="c0">“İcarəyə verən”</span><span
@@ -947,94 +949,26 @@
             class="c4 c13 c8">M.Y.</span><span
             class="c11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
             class="c21 c4 c11">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="c4 c8 c9">Sürücülük vәsiqәsi NO;</span><span
-            class="c8 c9">&nbsp;</span><span class="c4 c8 c9">{{customer.ID_number}}</span><span
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="c4 c8">Sürücülük vәsiqәsi NO;</span><span
+            class="c8 c9">&nbsp;</span><span class="c4 c8">{{customer.driver_id_number}}</span><span
             class="c11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; &nbsp; </span></p>
-    <p class="c3 c18"><span class="c8 c9">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        </span><span class="c4 c8 c9">Ünvan;</span><span class="c8 c9">&nbsp;</span><span
-            class="c4 c8 c9">__________________________________________________________</span></p>
-    <p class="c3 c18"><span
-            class="c8 c9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
-            class="c11 c8">&nbsp;</span></p>
-    <p class="c3 c18 c43"><span class="c4 c11 c8">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; </span><span
-            class="c20 c4 c8 c9">__________________________________________________________</span></p>
-    <p class="c3 c18"><span
-            class="c4 c8 c9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    </p>
-    <p class="c3 c18"><span class="c11 c8">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp;</span><span class="c4 c8 c9">__________________________________________________________</span>
-    </p>
-    <p class="c3 c18"><span class="c20 c11 c8 c27">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></p>
-    <p class="c3 c18"><span class="c11">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="c4 c8 c9">Faktiki
-            ünvan;</span><span class="c9">&nbsp;</span><span
-            class="c4 c8 c9">________________________________________________</span></p>
-    <p class="c3 c18"><span class="c20 c11 c8 c27">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
-    <p class="c3 c18"><span class="c11 c8">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp;</span><span class="c20 c4 c8 c9">__________________________________________________________</span>
-    </p>
-    <p class="c3 c6 c18"><span class="c20 c4 c8 c9"></span></p>
-    <p class="c3 c18"><span class="c4 c8 c9">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp;__________________________________________________________</span></p>
-    <p class="c3 c18"><span class="c11 c8">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></p>
-    <p class="c3"><span class="c4 c8 c9">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Tel;
-            _____________________________________________________________</span></p>
-    <p class="c3"><span
-            class="c20 c21 c4 c11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
-    <p class="c3"><span class="c4 c21">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="c21 c4 c11">&nbsp; </span><span
-            class="c4 c8 c9">__________________________________________________________</span><span
-            class="c20 c21 c4 c37">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></p>
-    <p class="c3 c6"><span class="c20 c37 c21 c4"></span></p>
-    <p class="c3"><span>_ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        </span><span class="c4 c8 c9">__________________________________________________________</span></p>
-    <p class="c3 c6"><span class="c7"></span></p>
-    <p class="c3"><span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="c4 c8 c9">Ev;
-            _____________________________________________________________</span><span class="c7">&nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp;</span></p>
+            &nbsp; &nbsp; </span></p><br><br>
+
+
+    <p class="c3"><span class="c4 c8 c9">Ünvan;</span><span class="c8 c9">&nbsp;</span><span
+            class="c4 c8 c9 c19">{{customer.address}}</span></p><br>
+
+
+    <p class="c3"><span class="c4 c8 c9">Faktiki ünvan;</span><span class="c9">&nbsp;</span><span
+            class="c4 c8 c9">{{customer.actual_address}}</span></p><br>
+
+
+    <p class="c3"><span class="c4 c8 c9">Telefon nömrəsi;</span><span class="c9">&nbsp;</span><span
+            class="c4 c8 c9">{{customer.phone_number}}</span></p><br>
+
+
+    <p class="c3"><span class="c4 c8 c9">Ev telefonu nömrəsi;</span><span class="c9">&nbsp;</span><span
+            class="c4 c8 c9">{{customer.home_number}}</span></p><br>
     <p class="c3 c6"><span class="c7"></span></p>
     <p class="c3 c6"><span class="c7"></span></p>
     <p class="c3 c6"><span class="c7"></span></p>
@@ -1093,14 +1027,14 @@
     <p class="c3 c6"><span class="c20 c11 c8 c27"></span></p>
     <p class="c3"><span class="c4 c8 c40">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="c8 c9">“
         </span><span class="c4 c8 c9">İcarəyə</span><span class="c8 c9">&nbsp;götürən“-nin S.A.A &nbsp;</span><span
-            class="c4 c13 c8">_________________________________________ &nbsp;</span><span class="c4 c8 c9">İmza;
+            class="c4 c13 c8 c19">{{customer.full_name}} &nbsp;</span><span class="c4 c8 c9">İmza;
             ______________</span></p>
     <p class="c3 c6"><span class="c5"></span></p>
     <p class="c3 c23"><span class="c20 c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TƏSLİM.</span></p>
     <p class="c3 c23 c6"><span class="c4 c11 c8 c20"></span></p>
     <p class="c3"><span class="c4 c8 c9">&nbsp; &nbsp; &nbsp; </span><span class="c21 c4 c26">&nbsp; &nbsp; </span><span
-            class="c4 c8 c9">Təslim Alan</span><span class="c11 c8">;
-            _________________________________________</span><span class="c8 c28">&nbsp;</span><span
+            class="c4 c8 c9">Təslim Alan</span><span class="c13 c11 c8 c19">;
+            {{customer.firstname}} &nbsp; {{customer.lastname}}</span><span class="c8 c28">&nbsp;</span><span
             class="c11 c8">&nbsp;</span><span class="c4 c8 c9">İmza; </span><span class="c11 c8">_______________</span>
     </p>
     <p class="c3 c6"><span class="c17 c14"></span></p>
@@ -1126,7 +1060,7 @@
     <p class="c3 c6"><span class="c20 c11 c8 c27"></span></p>
     <p class="c3"><span class="c4 c40 c8">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span
             class="c8 c9">“</span><span class="c4 c8 c9">İcarəyə</span><span class="c8 c9">&nbsp;götürən“-nin S.A.A
-            &nbsp;</span><span class="c4 c13 c8">_________________________________________ &nbsp;</span><span
+            &nbsp;</span><span class="c4 c13 c8 c19">{{customer.full_name}} &nbsp;</span><span
             class="c4 c8 c9">İmza; ______________</span></p>
     <p class="c3 c6"><span class="c5"></span></p>
     <p class="c16 c6"><span class="c5"></span></p>

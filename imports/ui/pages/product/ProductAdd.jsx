@@ -104,6 +104,7 @@ export function ProductAddPage() {
     <Form
       name="basic"
       onFinish={(values) => {
+        console.log("values", values)
         values._id = Random.id();
         onProductFinish(values, (values) => {
           navigate("/products");

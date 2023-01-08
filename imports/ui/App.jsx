@@ -5,7 +5,7 @@ import "./main.css";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
 import {
-  Space,
+  Space, 
   Popconfirm,
   InputNumber,
   Upload,

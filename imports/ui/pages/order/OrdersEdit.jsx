@@ -25,6 +25,7 @@ export function OrderCommonFields({ onMuqavileClick, }) {
         <h1>Sifariş</h1>
       </span>
       <span>
+        {/* gorsen bura onclick hec yazilmiyib buna gore islemir dunen nece isledi?kafededunen bu islemirdi.Ola biler pdf i gostermisem tekce.zalim duzeltmemisense denenki hele hazir deyil onag ore islemir belibeli devam devam ? davam elede yenia bir sey yoxdu dunen dedinki table-a nese elave elemek lazimdi */}
         <Button type="primary">Yol vərəqəsini çap et</Button>
       </span>
       <span>
@@ -76,7 +77,7 @@ export function OrderCommonFields({ onMuqavileClick, }) {
         rules={[
           {
             required: true,
-            message: "Zəhmət olmasa hərəkət ərazisi və istiqaməti daxil edin!",
+            message: "Zəhmət olmasa vaxt aralığı daxil edin!",
           },
         ]}
       >
@@ -88,7 +89,7 @@ export function OrderCommonFields({ onMuqavileClick, }) {
         rules={[
           {
             required: true,
-            message: "Zəhmət olmasa hərəkət ərazisi və istiqaməti daxil edin!",
+            message: "Zəhmət olmasa maşını daxil edin!",
           },
         ]}
       >
@@ -121,7 +122,7 @@ export function OrderCommonFields({ onMuqavileClick, }) {
               value: p._id,
             };
           })}
-          placeholder="Maşını seçin"
+          placeholder="Müştərini seçin"
         />
       </Form.Item>
     </>
@@ -150,6 +151,7 @@ export function OrderEditPage() {
       if (err) {
         notification.error({ message: "nese sehv getdi" })
       } else if (res) {
+        console.log("res", res)
         const printer = new Printer({ url: `/pdf/permission/permission.html`, isDev: false });
         await printer.init();
         await printer.print(res);

@@ -14,6 +14,9 @@ function update_order(data) {
 
 }
 function add_order(data) {
+  let lastOrder = OrdersCol.find().fetch()
+  console.log("lastOrder", lastOrder[lastOrder.length - 1])
+  data.order_number = (lastOrder[lastOrder.length - 1].order_number + 1) || 1
   OrdersCol.insert(data);
   return OrdersCol.findOne({ _id: data._id });
 }
@@ -22,7 +25,6 @@ function get_order_pdf_muqavile(_id) {
   const product = ProductsCol.findOne({ _id: order.product_id })
   const customer = CustomersCol.findOne({ _id: order.customer_id })
   customer.full_name = customer.firstname + " " + customer.lastname + " " + customer.father_name + ` ${customer.gender == 1 ? "qızı" : "oğlu"}`
-  console.log("customer", customer)
   return {
     order,
     product,

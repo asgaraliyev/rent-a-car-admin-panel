@@ -127,6 +127,58 @@ export function CustomerCommonFields({  }) {
       >
         <Input />
       </Form.Item>
+
+
+
+      <Form.Item
+        label="Ünvan"
+        name="address"
+        rules={[
+          {
+            required: true,
+            message: "Zəhmət olmasa ünvanı daxil edin!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Faktiki ünvan"
+        name="actual_address"
+        rules={[
+          {
+            required: true,
+            message: "Zəhmət olmasa faktiki ünvanı daxil edin!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Mobil nömrə"
+        name="phone_number"
+        rules={[
+          {
+            required: true,
+            message: "Zəhmət olmasa mobil nömrəni daxil edin!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Ev nömrəsi"
+        name="home_number"
+        rules={[
+          {
+            message: "Zəhmət olmasa ev telefonu nömrəsini daxil edin!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+
       <Form.Item
         label="Rating"
         name="rating"
