@@ -14,9 +14,6 @@ function update_order(data) {
 
 }
 function add_order(data) {
-  // let lastOrder = OrdersCol.find().fetch()
-  // console.log("lastOrder", lastOrder[lastOrder.length - 1])
-  // data.order_number = (lastOrder[lastOrder.length - 1].order_number + 1) || 1
   let orders = OrdersCol.find().fetch()
   orders.sort((a,b)=>a.order_number<b.order_number? 1 : -1)
   let largestOrderNumber = orders[0]?.order_number
